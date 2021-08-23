@@ -12,23 +12,29 @@ class App extends Component {
 
   async componentDidMount() {
     // API call
+    this.searchMovie("avengers");
+  }
+
+  searchMovie = async ( searchKeyword ) => {
     let data = await axios.get(`${process.env.REACT_APP_URL}/search/movie`, {
       params: {
         api_key: process.env.REACT_APP_KEY,
         page: 1,
-        query: this.state.currentMovie
+        query: searchKeyword
       }
     });
     let moviesData = data.data.results;
     this.setState({
-      moviesData
+      moviesData,
+      currentMovie: searchKeyword
     })
   }
+  
 
   render() {
     return (
       <div className="App">
-        <Header></Header>
+        <Header searchMovie={this.searchMovie}></Header>
         <Movies movies={this.state.moviesData}></Movies>
       </div>);
   }
