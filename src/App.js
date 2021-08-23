@@ -3,11 +3,14 @@ import Header from './Components/Header/Header';
 import Movies from './Components/Movies/Movies';
 import axios from 'axios';
 import "./App.css"
+import Pagination from './Components/Pagination/Pagination';
 
 class App extends Component {
   state = {
     moviesData: [],
-    currentMovie: "avengers"
+    currentMovie: "avengers",
+    pages: [],
+    currentPage: 1
   }
 
   async componentDidMount() {
@@ -15,27 +18,62 @@ class App extends Component {
     this.searchMovie("avengers");
   }
 
-  searchMovie = async ( searchKeyword ) => {
+  searchMovie = async ( searchKeyword, page=1 ) => {
     let data = await axios.get(`${process.env.REACT_APP_URL}/search/movie`, {
       params: {
         api_key: process.env.REACT_APP_KEY,
-        page: 1,
+        page,
         query: searchKeyword
       }
     });
     let moviesData = data.data.results;
+    let pagesCount = data.data.total_pages;
+    let currentPage = data.data.page;
+    let pages = [];
+    for(let i = 1; i <= pagesCount; i++){
+      pages.push(i);
+    }
     this.setState({
       moviesData,
-      currentMovie: searchKeyword
+      currentMovie: searchKeyword,
+      pages,
+      currentPage
     })
   }
   
+  previousPage = async () => {
+    if(this.state.currentPage <= 1){
+      return;
+    }
+    this.searchMovie(this.state.currentMovie, this.state.currentPage - 1);
+  }
+  nextPage = async () => {
+    if(this.state.currentPage >= this.state.pages.length){
+      return;
+    }
+    this.searchMovie(this.state.currentMovie, this.state.currentPage + 1);
+  }
+  setPage = async (pagesCount) => {
+    this.searchMovie(this.state.currentMovie, pagesCount)
+  }
 
   render() {
     return (
       <div className="App">
         <Header searchMovie={this.searchMovie}></Header>
+        {this.state.moviesData.length ? (<>
         <Movies movies={this.state.moviesData}></Movies>
+        <Pagination 
+          pages={this.state.pages} 
+          currentPage={this.state.currentPage}
+          nextPage = {this.nextPage}
+          previousPage={this.previousPage}
+          setPage={this.setPage}
+          ></Pagination>
+          </>
+        ): (
+          <h1 className="not-found">Oops... No movies found</h1>
+        )}
       </div>);
   }
 }

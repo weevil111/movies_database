@@ -2,6 +2,6 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 60px;
-  padding: 20px;
+  gap: 20px;
+  padding: 8px;
 }

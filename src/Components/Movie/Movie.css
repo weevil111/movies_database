@@ -4,7 +4,14 @@
   color: white;
   font-size: 0.6rem;
   background-color: #161a1d;
+  transition: transform 1s;
+  cursor: pointer;
 }
+
+.movie-item:hover {
+  transform: scale(1.1);
+}
+
 .movie-poster {
   height: 90%;
 }
