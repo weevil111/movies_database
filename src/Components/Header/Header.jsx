@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import "./Header.css"
+
 class Header extends Component {
   state = {  }
   render() { 
-    return ( <h1>Header component</h1>  );
+    return ( <div className="header">
+      <div className="logo">
+        <img src="logo.svg" alt="" />
+      </div>
+      <div className="search-btn">
+        <input className="search-movies" type="text" placeholder="Search"/>
+      </div>
+    </div>  );
   }
 }
  

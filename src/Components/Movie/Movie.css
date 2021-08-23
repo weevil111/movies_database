@@ -1,0 +1,25 @@
+.movie-item {
+  width: 200px;
+  height: 300px;
+  color: white;
+  font-size: 0.6rem;
+  background-color: #161a1d;
+}
+.movie-poster {
+  height: 90%;
+}
+.movie-poster img {
+  height: 100%;
+  width: 100%;
+}
+.movie-info {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+}
+.movie-title {
+}
+.movie-rating {
+}

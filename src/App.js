@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Components/Header/Header';
 import Movies from './Components/Movies/Movies';
 import axios from 'axios';
+import "./App.css"
 
 class App extends Component {
   state = {
