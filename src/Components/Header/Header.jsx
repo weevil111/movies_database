@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, useHistory, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import "./Header.css"
 
 class Header extends Component {
@@ -14,7 +14,7 @@ class Header extends Component {
   }
   
   handleKeyPress = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       this.setState({
         searchKeyword: ""
       })
@@ -27,7 +27,7 @@ class Header extends Component {
     return (<div className="header">
       <div className="logo">
         <Link to="/">
-          <img src="logo.svg" alt="" />
+          <img src="/movies_database/logo.svg" alt="" />
         </Link>
       </div>
       <div className="search-btn">
@@ -45,10 +45,10 @@ class Header extends Component {
           <Link to="/">Home</Link>
         </div>
         <div className="header-link">
-          <Link to={{pathname:"/trending", state: "movie"}}>Movies</Link>
+          <Link to={{pathname:"/trending", state: "movie"}} replace>Movies</Link>
         </div>
         <div className="header-link">
-          <Link to={{pathname:"/trending", state:"tv"}}>TV Shows</Link>
+          <Link to={{pathname:"/trending", state:"tv"}} replace>TV Shows</Link>
         </div>
       </div>
     </div>);

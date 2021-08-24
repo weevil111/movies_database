@@ -4,7 +4,7 @@ import Movies from './Components/Movies/Movies';
 import axios from 'axios';
 import "./App.css"
 import Pagination from './Components/Pagination/Pagination';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import Trending from './Components/Trending/Trending';
 import MoviePage from './Components/MoviePage/MoviePage';
 
@@ -62,7 +62,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <HashRouter>
         <div className="App">
           <Header searchMovie={this.searchMovie}></Header>
           <Route path="/" exact>
@@ -85,7 +85,7 @@ class App extends Component {
           </Route>
           <Route path="/moviepage" component={MoviePage}></Route>
         </div>
-      </Router>);
+      </HashRouter>);
   }
 }
 

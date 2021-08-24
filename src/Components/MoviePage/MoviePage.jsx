@@ -26,8 +26,8 @@ class MoviePage extends Component {
     let trailer = {};
     if(movieVideosResponse.data){
       const allTrailers = movieVideosResponse.data.results.filter(videoObj => {
-        return videoObj.site == "YouTube" &&
-        videoObj.type == "Trailer"
+        return videoObj.site === "YouTube" &&
+        videoObj.type === "Trailer"
       });
       if(allTrailers.length > 0){
         trailer = allTrailers[0];
