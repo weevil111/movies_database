@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import "./Header.css"
 
 class Header extends Component {
@@ -13,7 +14,7 @@ class Header extends Component {
   }
 
   handleKeyPress = (e) => {
-    if(e.key == "Enter"){
+    if (e.key == "Enter") {
       this.props.searchMovie(this.state.searchKeyword);
     }
   }
@@ -30,6 +31,14 @@ class Header extends Component {
           onKeyPress={this.handleKeyPress}
           type="text"
           placeholder="Search" />
+      </div>
+      <div className="header-links">
+        <div className="header-link">
+          <Link to="/">Home</Link>
+        </div>
+        <div className="header-link">
+          <Link to="/fav">Favorites</Link>
+        </div>
       </div>
     </div>);
   }
