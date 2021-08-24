@@ -12,11 +12,11 @@ class Pagination extends Component {
           </li>
           {this.props.pages.map(page => {
             return page == this.props.currentPage ? (
-              <li className="page-item active">
+              <li className="page-item active" key={page}>
                 <a className="page-link" href="#">{page}</a>
               </li>
             ) : (
-              <li className="page-item" onClick={() => this.props.setPage(page)}>
+              <li className="page-item" onClick={() => this.props.setPage(page)} key={page}>
                 <a className="page-link" href="#">{page}</a>
               </li>
             )

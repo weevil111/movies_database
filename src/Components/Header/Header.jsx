@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, withRouter } from 'react-router-dom';
 import "./Header.css"
 
 class Header extends Component {
@@ -12,17 +12,23 @@ class Header extends Component {
       searchKeyword: value
     })
   }
-
+  
   handleKeyPress = (e) => {
     if (e.key == "Enter") {
+      this.setState({
+        searchKeyword: ""
+      })
       this.props.searchMovie(this.state.searchKeyword);
+      this.props.history.push("/")
     }
   }
 
   render() {
     return (<div className="header">
       <div className="logo">
-        <img src="logo.svg" alt="" />
+        <Link to="/">
+          <img src="logo.svg" alt="" />
+        </Link>
       </div>
       <div className="search-btn">
         <input
@@ -30,18 +36,23 @@ class Header extends Component {
           onChange={this.handleOnChange}
           onKeyPress={this.handleKeyPress}
           type="text"
-          placeholder="Search" />
+          placeholder="Search"
+          value={this.state.searchKeyword}
+          />
       </div>
       <div className="header-links">
         <div className="header-link">
           <Link to="/">Home</Link>
         </div>
         <div className="header-link">
-          <Link to="/fav">Favorites</Link>
+          <Link to={{pathname:"/trending", state: "movie"}}>Movies</Link>
+        </div>
+        <div className="header-link">
+          <Link to={{pathname:"/trending", state:"tv"}}>TV Shows</Link>
         </div>
       </div>
     </div>);
   }
 }
 
-export default Header;
+export default withRouter(Header);

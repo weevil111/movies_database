@@ -27,7 +27,8 @@
 }
 
 .header-link{
-
+  padding: 5px;
+  text-align: center;
 }
 .header-link a {
   text-decoration: none;

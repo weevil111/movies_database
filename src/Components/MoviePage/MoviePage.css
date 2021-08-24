@@ -17,6 +17,7 @@
 
 .movie-page-details{
   position: absolute;
+  width: 100%;
   top: 0px;
   color: white;
   padding: 40px;

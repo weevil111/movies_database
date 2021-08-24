@@ -5,7 +5,7 @@ import axios from 'axios';
 import "./App.css"
 import Pagination from './Components/Pagination/Pagination';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Favourite from './Components/Favourite/Favourite';
+import Trending from './Components/Trending/Trending';
 import MoviePage from './Components/MoviePage/MoviePage';
 
 class App extends Component {
@@ -80,8 +80,8 @@ class App extends Component {
               <h1 className="not-found">Oops... No movies found</h1>
             )}
           </Route>
-          <Route path="/fav" exact>
-            <Favourite></Favourite>
+          <Route path="/trending" exact>
+            <Trending></Trending>
           </Route>
           <Route path="/moviepage" component={MoviePage}></Route>
         </div>

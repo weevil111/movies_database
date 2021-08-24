@@ -39,7 +39,6 @@ class MoviePage extends Component {
       movie,
       trailer
     })
-    console.log(this.state);
   }
 
   render() { 
